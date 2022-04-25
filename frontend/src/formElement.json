@@ -1,0 +1,16 @@
+{
+  "unit": {
+    "id": 2,
+    "num_of_bedrooms": 2,
+    "num_of_bathrooms": 2,
+    "num_of_balcony": 2,
+    "is_available": true,
+    "is_reserved": false,
+    "unit_availability_start_date": null,
+    "unit_availability_end_date": null,
+    "unit_description": "create place man",
+    "living_area_sf": 5000,
+    "unit_number": 23,
+    "unit_at_floor": 2
+  }
+}

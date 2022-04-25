@@ -24,12 +24,6 @@ function Header() {
 
           <Link to="/Contact">Contact</Link>
         </LeftMenu>
-        <RightMenu>
-          <CustomBurger
-            onClick={() => setOpenBurger(true)}
-            style={{ fontSize: 40 }}
-          />
-        </RightMenu>
         <RightNav show={openBurger}>
           <Close onClick={() => setOpenBurger(false)} />
 
@@ -53,6 +47,12 @@ function Header() {
           </li>
         </RightNav>
       </NavWrap>
+      <RightMenu>
+        <CustomBurger
+          onClick={() => setOpenBurger(true)}
+          style={{ fontSize: 40 }}
+        />
+      </RightMenu>
     </Container>
   );
 }
