@@ -4,8 +4,6 @@ import Loader from "react-loader-spinner";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import api from "../highOrder/axios";
-import $ from "jquery";
-import jQuery from "jquery";
 
 const UnitForm = () => {
   const [submit, setSubmit] = useState(false);
@@ -67,11 +65,9 @@ const UnitForm = () => {
 
   return (
     <div>
-      <Container2>
-        <p fontSize="25px">
-          Enter the Unit Information and lik submit. All fields are required
-        </p>
-      </Container2>
+      <P>
+        Enter Unit information in the form fields below. Hit "Submit" when ready
+      </P>
       <Wrap>
         <form>
           <Container>
@@ -231,21 +227,33 @@ const UnitForm = () => {
           </Container>
         </form>
       </Wrap>
+      <P>
+        All fields must be entered, Leaving A field blank will result in no data
+        being stored
+      </P>
     </div>
   );
 };
 
 export default UnitForm;
 
+const P = styled.div`
+  text-align: center;
+  color: black;
+`;
 const Wrap = styled.div`
   padding-top: 10%;
-  padding-left: 400px;
   width: 100%;
   hight: 100%;
   float: left;
   display: flex;
   justify-content: center;
   align-items: center;
+  border: solid;
+  border-color: black;
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: rgba(23, 26, 32, 0.8);
 `;
 
 const FirstButton = styled.div`
@@ -265,20 +273,12 @@ const FirstButton = styled.div`
   text-align: center;
 `;
 
-const Container2 = styled.div`
-  padding-top: 10px;
-  width: 100%;
-  height: 2vh;
-  display: flex;
-  align-items: center;
-`;
-
 const Container = styled.div`
   padding: 10px;
   padding-top: 10px;
   width: 50%;
   float: left;
-  height: 100vh;
+  height: 65vh;
   align-items: column;
   label {
     width: 300px;

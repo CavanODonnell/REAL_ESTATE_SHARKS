@@ -1,4 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
+import Loader from "react-loader-spinner";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+import api from "../highOrder/axios";
 
 const UnitDelete = () => {
   const [submit, setSubmit] = useState(false);
@@ -16,7 +21,7 @@ const UnitDelete = () => {
 
   const onDelete = () => async () => {
     const res = await axios
-      .delete("http://127.0.0.1:8000/unit/", {
+      .delete("http://127.0.0.1:8000/unit/" + formData.id + "/", {
         unit: {
           id,
         },
@@ -28,11 +33,12 @@ const UnitDelete = () => {
 
   return (
     <div>
+      <P>ENTER ID TO DELETE UNIT BY ID</P>
       <Wrap>
         <form>
           <Container>
             <div>
-              <label htmlFor="id">Selet ID to Delete</label>
+              <label htmlFor="id">Enter ID</label>
               <input
                 id="id"
                 type="text"
@@ -48,9 +54,9 @@ const UnitDelete = () => {
                 name="Submit"
                 id="submit"
                 disabled="disabled"
-                onClick={onSubmit(false)}
+                onClick={onDelete()}
               >
-                Submit
+                Delete
               </FirstButton>
             </div>
           </Container>
@@ -61,3 +67,89 @@ const UnitDelete = () => {
 };
 
 export default UnitDelete;
+
+const P = styled.div`
+  text-align: center;
+  color: black;
+`;
+const Wrap = styled.div`
+  padding-top: 10%;
+  width: 100%;
+  hight: 100%;
+  float: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid;
+  border-color: black;
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: rgba(23, 26, 32, 0.8);
+`;
+
+const FirstButton = styled.div`
+  padding: 10px;
+  width: 300px;
+  color: #2577be;
+  background-color: rgba(23, 26, 32, 0.8);
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 60px;
+  opacity: 0.85;
+  text-transform: uppercase;
+  font-size: 12px;
+  cursor: pointer;
+  text-align: center;
+`;
+
+const Container = styled.div`
+  padding: 10px;
+  padding-top: 10px;
+  width: 50%;
+  float: left;
+  height: 65vh;
+  align-items: column;
+  label {
+    width: 300px;
+    color: #2577be;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    font-size: 15px;
+    text-align: center;
+  }
+
+  input {
+    width: 300px;
+    color: white;
+    background-color: rgba(23, 26, 32, 0.8);
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 60px;
+    opacity: 0.85;
+    font-size: 12px;
+    cursor: hover;
+    text-align: center;
+  }
+
+  select {
+    width: 300px;
+    color: white;
+    background-color: rgba(23, 26, 32, 0.8);
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 60px;
+    opacity: 0.85;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: center;
+  }
+`;

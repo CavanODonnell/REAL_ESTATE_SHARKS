@@ -8,8 +8,8 @@ function Section() {
     <Wrap>
       <Fade top>
         <ItemText>
-          <h1>Real Estate Shark Home</h1>
-          <p>Your in dangerious waters, where would you like to go?</p>
+          <h1>Welcome To Real Estate Sharks</h1>
+          <p>Check out our latest rentals near you on the Explore page</p>
         </ItemText>
       </Fade>
       <Fade left>
@@ -34,9 +34,8 @@ export default Section;
 
 const Wrap = styled.div`
   z-index: 10;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
-  margin: 50px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -48,6 +47,7 @@ const Wrap = styled.div`
 `;
 
 const ItemText = styled.div`
+  padding-top: 75px;
   z-index: 10;
   color: blue;
   text-align: center;

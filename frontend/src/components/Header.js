@@ -4,6 +4,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import MenuOpenIcon from "@mui/icons-material/MenuOpen";
 import CloseIcon from "@mui/icons-material/Close";
 import { Link } from "react-router-dom";
+import Fade from "react-reveal/Fade";
 
 function Header() {
   const [openBurger, setOpenBurger] = useState(false);
@@ -24,27 +25,30 @@ function Header() {
 
           <Link to="/Contact">Contact</Link>
         </LeftMenu>
-        <RightNav show={openBurger}>
-          <Close onClick={() => setOpenBurger(false)} />
 
-          <li>
-            <Link to="/Payments">Payments</Link>
-          </li>
-          <li>
-            <Link to="/Maintanence">Maintanence</Link>
-          </li>
-          <li>
-            <Link to="/Apartments">Apartments</Link>
-          </li>
-          <li>
-            <Link to="/EnterData">EnterData</Link>
-          </li>
-          <li>
-            <Link to="Account">Account</Link>
-          </li>
-          <li>
-            <Link to="Contact">Help</Link>
-          </li>
+        <RightNav show={openBurger}>
+          <Fade right>
+            <Close onClick={() => setOpenBurger(false)} />
+
+            <li>
+              <Link to="/Payments">Payments</Link>
+            </li>
+            <li>
+              <Link to="/Maintanence">Maintanence</Link>
+            </li>
+            <li>
+              <Link to="/Apartments">Apartments</Link>
+            </li>
+            <li>
+              <Link to="/EnterData">EnterData</Link>
+            </li>
+            <li>
+              <Link to="Account">Account</Link>
+            </li>
+            <li>
+              <Link to="Contact">Help</Link>
+            </li>
+          </Fade>
         </RightNav>
       </NavWrap>
       <RightMenu>
@@ -63,6 +67,7 @@ const NavWrap = styled.div`
   display: flex;
   justify-content: flex-end;
   opacity: 0.75;
+  background: black;
 `;
 const Close = styled(CloseIcon)`
   cursor: pointer;

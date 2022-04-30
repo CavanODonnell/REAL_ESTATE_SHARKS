@@ -3,7 +3,7 @@ import api from "../highOrder/axios";
 import styled from "styled-components";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import CardList from "../components/CardList";
+import Listings from "../components/Listings";
 import UnitCard from "../components/UnitCard";
 
 export default function Explore() {
@@ -19,7 +19,7 @@ export default function Explore() {
 
   const fetchAllUnits = async () => {
     api.get("unitlisting/").then((res) => {
-      setUnits([...units, res.data.units]);
+      setUnits(res.data.units);
       console.log(units);
     });
   };
@@ -29,11 +29,12 @@ export default function Explore() {
     fetchAllUnits();
   }, []);
 
+  //<UnitCard unit={unit} />
   return (
     <Container>
       <SearchWrap>
         <Header />
-        <UnitCard unit={unit} />
+        <Listings listings={units} />
         <Footer />
       </SearchWrap>
     </Container>
@@ -42,7 +43,7 @@ export default function Explore() {
 
 const SearchWrap = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

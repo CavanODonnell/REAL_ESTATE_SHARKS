@@ -16,22 +16,20 @@ const UnitCard = (props) => {
     <CCard style={{ width: "25rem" }}>
       <CCardImage orientation="flex" src="/images/solar-panel.jpg" />
       <CCardBody>
-        <CCardTitle>Unit ID Number: {props.unit.id}</CCardTitle>
-        <CCardText>Description: {props.unit.unit_description}</CCardText>
+        <CCardTitle>Unit ID Number: {props.id}</CCardTitle>
+        <CCardText>Description: {props.unit_description}</CCardText>
       </CCardBody>
       <CListGroup flush>
-        <CListGroupItem>Balconies: {props.unit.num_of_balcony}</CListGroupItem>
-        <CListGroupItem>Bedrooms: {props.unit.bedrooms}</CListGroupItem>
+        <CListGroupItem>Balconies: {props.num_of_balcony}</CListGroupItem>
+        <CListGroupItem>Bedrooms: {props.bedrooms}</CListGroupItem>
+        <CListGroupItem>Bathrooms: {props.num_of_bathrooms}</CListGroupItem>
         <CListGroupItem>
-          Bathrooms: {props.unit.num_of_bathrooms}
+          Available Start Date: {props.unit_availability_start_date}
         </CListGroupItem>
         <CListGroupItem>
-          Available Start Date{props.unit.unit_availability_start_date}
+          Available End Date: {props.unit_availability_end_date}
         </CListGroupItem>
-        <CListGroupItem>
-          Available End Date{props.unit.unit_availability_end_date}
-        </CListGroupItem>
-        <CListGroupItem>Unit Sqft: {props.unit.living_area_sf}</CListGroupItem>
+        <CListGroupItem>Unit Sqft: {props.living_area_sf}</CListGroupItem>
       </CListGroup>
       <CCardBody>
         <CCardLink href="#">Details</CCardLink>
