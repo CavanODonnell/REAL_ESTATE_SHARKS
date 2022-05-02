@@ -23,6 +23,7 @@ const listings = ({ listings }) => {
           living_area_sf={unit.living_area_sf}
           unit_number={unit.unit_number}
           unit_at_floor={unit.unit_at_floor}
+          price_per_month={unit.price_per_month}
         />
       );
     });
@@ -46,46 +47,41 @@ const listings = ({ listings }) => {
 export default listings;
 
 const Container = styled.div`
-  padding-top: 2hv;
   width: 100%;
-  height: 100%;
+  padding-top: 4%;
   align-items: center;
-  background: darkGrey;
+  background: clear;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const Row = styled.div`
-  padding-top: 10px;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-bottom: 10px;
-  background: darkGrey;
-  width: 50%;
-  float: left;
-  hight: 300px;
+  width: 100%;
+  padding: 15px;
+  hight: 35rem;
   justify-content: center;
   align-items: center;
 `;
 
 const Col1 = styled.div`
-  padding-top: 10%;
+  padding: 25px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background: darkGrey;
-  background-image: url("/images/solar-panel.jpg");
+  width: 30%;
+  float: left;
 `;
 const Col2 = styled.div`
-  padding-top: 10%;
+  padding: 25px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background: darkGrey;
-  background-image: url("/images/solar-panel.jpg");
+  width: 30%;
+  float: left;
 `;
 const Col3 = styled.div`
-  padding-top: 10%;
+  padding: 25px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background: darkGrey;
+  width: 30%;
+  float: left;
 `;

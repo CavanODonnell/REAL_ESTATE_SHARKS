@@ -18,6 +18,7 @@ const UnitForm = () => {
     living_area_sf: "0",
     unit_number: "0",
     unit_at_floor: "0",
+    price_per_month: "0",
   });
 
   const {
@@ -32,6 +33,7 @@ const UnitForm = () => {
     living_area_sf,
     unit_number,
     unit_at_floor,
+    price_per_month,
   } = formData;
 
   const onChange = (e) => {
@@ -54,6 +56,7 @@ const UnitForm = () => {
           living_area_sf,
           unit_number,
           unit_at_floor,
+          price_per_month,
         },
       })
       .catch((err) => {
@@ -208,6 +211,16 @@ const UnitForm = () => {
                 name="unit_at_floor"
                 onChange={(e) => onChange(e)}
                 value={unit_at_floor}
+              ></input>
+            </div>
+            <div>
+              <label htmlFor="price_per_month">Monthly Cost</label>
+              <input
+                id="price_per_month"
+                type="text"
+                name="price_per_month"
+                onChange={(e) => onChange(e)}
+                value={price_per_month}
               ></input>
             </div>
             <div show={submit}>

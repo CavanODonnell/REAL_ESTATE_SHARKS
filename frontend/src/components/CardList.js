@@ -16,6 +16,7 @@ const CardList = ({ units }) => {
       living_area_sf={unit.living_area_sf}
       unit_number={unit.unit_number}
       unit_at_floor={unit.unit_at_floor}
+      price_per_month={unit.price_per_month}
     />
   ));
 
