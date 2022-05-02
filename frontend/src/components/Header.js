@@ -43,10 +43,10 @@ function Header() {
               <Link to="/EnterData">EnterData</Link>
             </li>
             <li>
-              <Link to="Account">Account</Link>
+              <Link to="/Account">Account</Link>
             </li>
             <li>
-              <Link to="Contact">Help</Link>
+              <Link to="/Contact">Help</Link>
             </li>
           </Fade>
         </RightNav>

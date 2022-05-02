@@ -4,81 +4,64 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import axios from "../highOrder/axios";
 import UnitCard from "../components/UnitCard";
+import Button from "@mui/material/Button";
+import api from "../highOrder/axios";
+import Fade from "react-reveal/Fade";
 
 //getting the base url based on database and appending for
 //what we need
 const Apartments = () => {
-  const [listings, setListings] = useState([]);
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-
-    const fetchData = async () => {
-      try {
-        const res = await axios.get(`http://127.0.0.1:8000/unitlisting/`);
-
-        setListings(res.data.results);
-        setCount(res.data.count);
-      } catch (err) {}
-    };
-
-    fetchData();
-  }, []);
-
-  const displayListings = () => {
-    let display = [];
-    let result = [];
-
-    listings.map((listing) => {
-      return display.push(
-        <UnitCard
-          num_of_bedrooms={listing.num_of_bedrooms}
-          num_of_bathrooms={listing.num_of_bathrooms}
-          num_of_balcony={listing.num_of_balcony}
-          is_available={listing.is_available}
-          is_reserved={listing.is_reserved}
-          unit_availability_start_date={listing.unit_availability_start_date}
-          unit_availability_end_date={listing.unit_availability_end_date}
-          unit_description={listing.unit_description}
-          living_area_sf={listing.living_area_sf}
-          unit_number={listing.unit_number}
-          unit_at_floor={listing.unit_at_floor}
-        />
-      );
-    });
-
-    for (let i = 0; i < listings.length; i += 3) {
-      result.push(
-        <div key={i} className="row">
-          <div className="col-1-of-3">{display[i]}</div>
-          <div className="col-1-of-3">
-            {display[i + 1] ? display[i + 1] : null}
-          </div>
-          <div className="col-1-of-3">
-            {display[i + 2] ? display[i + 2] : null}
-          </div>
-        </div>
-      );
-    }
-
-    return result;
-  };
-
+  const [unit, setUnit] = useState("");
   const [openSearch, setOpenSearch] = useState(true);
 
-  const handleSearch = (a) => {
-    setOpenSearch(a);
+  const [formData, setFormData] = useState({
+    num_of_bedrooms: "0",
+    num_of_bathrooms: "0",
+    num_of_balcony: "0",
+    is_available: "true",
+    is_reserved: "false",
+    unit_availability_start_date: null,
+    unit_availability_end_date: null,
+    unit_description: "For Rent",
+    living_area_sf: "0",
+    unit_number: "0",
+    unit_at_floor: "0",
+  });
+
+  const {
+    num_of_bedrooms,
+    num_of_bathrooms,
+    num_of_balcony,
+    is_available,
+    is_reserved,
+    unit_availability_start_date,
+    unit_availability_end_date,
+    unit_description,
+    living_area_sf,
+    unit_number,
+    unit_at_floor,
+  } = formData;
+
+  const onChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+    console.log(formData);
+  };
+
+  const fetchUnit = async () => {
+    api.get("unit/1/").then((res) => {
+      setUnit(res.data.unit);
+      console.log(unit);
+    });
   };
 
   return (
-    <Wrap>
+    <div>
       <Header />
-      <ItemText>
-        {openSearch ? (
-          <Container>
-            <ButtonGroup>
-              <form class="row g-3">
+      {openSearch ? (
+        <Container>
+          <Fade left>
+            <Wrap2>
+              <form class="flex flex-col justify-center items-center">
                 <div class="col-md-6">
                   <label for="inputEmail4" class="form-label">
                     Apartment Type
@@ -112,7 +95,7 @@ const Apartments = () => {
                     placeholder="Apartment, studio, or floor"
                   ></input>
                 </div>
-                <div class="col-md-6">
+                <div>
                   <label for="inputCity" class="form-label">
                     City
                   </label>
@@ -122,7 +105,7 @@ const Apartments = () => {
                     id="inputCity"
                   ></input>
                 </div>
-                <div class="col-md-4">
+                <div>
                   <label for="inputState" class="form-label">
                     State
                   </label>
@@ -136,115 +119,75 @@ const Apartments = () => {
                     <option value={6}>New Hampshire</option>
                     <option value={1}>Vermont</option>
                   </select>
-                </div>
-                <div class="col-md-2">
                   <label for="inputZip" class="form-label">
                     Zip
                   </label>
                   <input type="text" class="form-control" id="inputZip"></input>
-                </div>
-                <div class="col-12">
-                  <div class="form-check"></div>
-                </div>
-                <div class="col-12">
-                  <Button onClick={() => handleSearch(false)}>Search</Button>
+                  <Button
+                    padding={10}
+                    margin={5}
+                    style={{
+                      maxWidth: "300px",
+                      maxHeight: "50px",
+                      minWidth: "300px",
+                      minHeight: "30px",
+                    }}
+                    variant="contained"
+                    type="submit"
+                    name="Submit"
+                    id="submit"
+                    onClick={() => [fetchUnit(), setOpenSearch(false)]}
+                  >
+                    Search
+                  </Button>
                 </div>
               </form>
-            </ButtonGroup>
-          </Container>
-        ) : (
-          /* Resulting search */
-          <SearchWrap>
-            <Container>
-              <ButtonGroup>
-                <Button onClick={() => handleSearch(true)}>
-                  Back to Search
-                </Button>
-                <section className="listings__listings">
-                  {displayListings()}
-                </section>
-              </ButtonGroup>
-            </Container>
-          </SearchWrap>
-        )
-        /*End of search results*/
-        }
-      </ItemText>
+            </Wrap2>
+          </Fade>
+        </Container>
+      ) : (
+        /* Resulting search */
+        <Container>
+          <Fade top>
+            <Button
+              style={{
+                maxWidth: "300px",
+                maxHeight: "50px",
+                minWidth: "300px",
+                minHeight: "30px",
+              }}
+              variant="contained"
+              type="submit"
+              name="Submit"
+              id="submit"
+              onClick={() => setOpenSearch(true)}
+            >
+              Back To Search
+            </Button>
+          </Fade>
+        </Container>
+      )
+      /*End of search results*/
+      }
       <Footer />
-    </Wrap>
+    </div>
   );
 };
 
 export default Apartments;
 
-const SearchWrap = styled.div`
-  width: 100vw;
-  height: 100vh;
+const Container = styled.div`
+  padding-top: 100px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url("/images/newYork-skyline.jpg");
+  background-image: url("/images/pool-by-sea.png");
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-`;
-
-const Search = styled.div`
-  cursor: pointer;
-`;
-const SearchNav = styled.div`
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  background: black;
-  width: 200px;
-  z-index: 5;
-  list-style: none;
-  padding: 20px;
-  text-align: start;
-  display: flex;
-  flex-direction: column;
-  border-radius: 3px;
-  opacity: 0.75;
-  transform: ${(props) => (props.show ? "TranslateX(0)" : "translateX(100%)")};
-  transition: transfrom 0.2;
-  li {
-    padding: 20px 0;
-    text-color: white;
-    border-radius: 10px;
-    opacity: 0.85;
-    text-transform: uppercase;
-    font-size: 12px;
-    cursor: pointer;
-    text-align: center;
-  }
-
-  a {
-    font-weight: 800;
-  }
-`;
-
-const Button = styled.div`
-  type: submit;
-  class: btn btn-primary
-  width: 100px;
-    color: white;
-    background-color: rgba(18, 20, 34, 0.8);
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 60px;
-    opacity: 0.95;
-    text-transform: uppercase;
-    font-size: 18px;
-    cursor: pointer;
-    text-align: center;
-`;
-const Container = styled.div`
   height: 100vh;
+
   label {
     width: 300px;
     color: purple;
@@ -287,46 +230,13 @@ const Container = styled.div`
     text-align: center;
   }
 `;
-const Wrap = styled.div`
-  width: 100vw;
-  height: 100vh;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  display: flex;
+
+const Wrap2 = styled.div`
+  padding-top: 4%;
+  hight: 75%;
+  opacity: .50
+  backgroundcolor: transparent;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
 `;
-
-const ItemText = styled.div`
-  padding-top: 15vh;
-  color: blue;
-  text-align: center;
-  display: flex;
-`;
-
-const ButtonGroup = styled.div`
-  display: flex;
-  margin-bottom: 50px;
-  @media (max-width: 1000px) {
-    flex-direction: column;
-  }
-  justify-content: center;
-`;
-const FirstButton = styled.div`
-  width: 300px;
-  color: white;
-  background-color: rgba(23, 26, 32, 0.8);
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 60px;
-  opacity: 0.85;
-  text-transform: uppercase;
-  font-size: 12px;
-  cursor: pointer;
-  text-align: center;
-`;
-const SecondButton = styled(FirstButton)``;

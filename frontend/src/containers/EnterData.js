@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import UnitForm from "../components/UnitForm";
 import UnitDelete from "../components/UnitDelete";
+import Fade from "react-reveal/Fade";
 
 function EnterData() {
   const [submit, setSubmit] = useState(true);
@@ -13,35 +14,40 @@ function EnterData() {
   };
 
   return (
-    <Container>
+    <Wrap>
       <Header />
-      <Wrap>
-        <UnitForm />
-      </Wrap>
-      <Wrap>
-        <UnitDelete />
-      </Wrap>
+      <Wrap2>
+        <Fade top>
+          <UnitForm />
+        </Fade>
+      </Wrap2>
+      <Wrap2>
+        <Fade top>
+          <UnitDelete />
+        </Fade>
+      </Wrap2>
       <Footer />
-    </Container>
+    </Wrap>
   );
 }
 
 export default EnterData;
-
 const Wrap = styled.div`
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url("/images/newYork-skyline.jpg");
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const Wrap2 = styled.div`
   padding-top: 4%;
   width: 50%;
   float: left;
   hight: 75%;
   opacity: .50
   backgroundcolor: transparent;
-`;
-
-const Container = styled.div`
-  bottom: 0;
-  top: 0;
-  left: 0;
-  right: 0;
-  backgroundcolor: rgba(0, 0, 0, 0.1);
-  background-image: url("/images/solar-panel.jpg");
 `;

@@ -9,6 +9,7 @@ import About from "./containers/About";
 import Contact from "./containers/Contact";
 import EnterData from "./containers/EnterData";
 import Explore from "./containers/Explore";
+import Login from "./components/Log";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route exact path="/Maintanence" element={<Maintanence />} />
         <Route exact path="/EnterData" element={<EnterData />} />
         <Route exact path="/Explore" element={<Explore />} />
+        <Route exact path="/Login" element={<Login />} />
       </Routes>
     </BrowserRouter>
   );

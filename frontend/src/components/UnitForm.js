@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import Loader from "react-loader-spinner";
-import PropTypes from "prop-types";
 import styled from "styled-components";
-import api from "../highOrder/axios";
+import Button from "@mui/material/Button";
 
 const UnitForm = () => {
   const [submit, setSubmit] = useState(false);
@@ -69,7 +67,7 @@ const UnitForm = () => {
         Enter Unit information in the form fields below. Hit "Submit" when ready
       </P>
       <Wrap>
-        <form>
+        <form classname="form1">
           <Container>
             <div>
               <label htmlFor="num_of_bedrooms">Number of Bedrooms</label>
@@ -214,15 +212,21 @@ const UnitForm = () => {
             </div>
             <div show={submit}>
               <label></label>
-              <FirstButton
+              <Button
+                style={{
+                  maxWidth: "300px",
+                  maxHeight: "50px",
+                  minWidth: "300px",
+                  minHeight: "30px",
+                }}
+                variant="contained"
                 type="submit"
                 name="Submit"
                 id="submit"
-                disabled="disabled"
                 onClick={onSubmit(false)}
               >
                 Submit
-              </FirstButton>
+              </Button>
             </div>
           </Container>
         </form>

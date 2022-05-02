@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Listings from "../components/Listings";
-import UnitCard from "../components/UnitCard";
+import Fade from "react-reveal/Fade";
 
 export default function Explore() {
   const [units, setUnits] = useState([]);
@@ -34,7 +34,9 @@ export default function Explore() {
     <Container>
       <SearchWrap>
         <Header />
-        <Listings listings={units} />
+        <Fade top>
+          <Listings listings={units} />
+        </Fade>
         <Footer />
       </SearchWrap>
     </Container>

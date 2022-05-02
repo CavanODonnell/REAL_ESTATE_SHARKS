@@ -72,6 +72,7 @@ const Col1 = styled.div`
   justify-content: center;
   align-items: center;
   background: darkGrey;
+  background-image: url("/images/solar-panel.jpg");
 `;
 const Col2 = styled.div`
   padding-top: 10%;
@@ -79,6 +80,7 @@ const Col2 = styled.div`
   justify-content: center;
   align-items: center;
   background: darkGrey;
+  background-image: url("/images/solar-panel.jpg");
 `;
 const Col3 = styled.div`
   padding-top: 10%;
