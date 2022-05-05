@@ -1,43 +1,54 @@
 import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-
-import { styled } from "@mui/material/styles";
+import styled from "styled-components";
 import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
-
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: "center",
-  color: theme.palette.text.secondary,
-}));
 
 function Contact() {
   return (
-    <div>
+    <Container>
       <Header />
-      <Box sx={{ flexGrow: 1 }}>
+      <Box padding-top="5rem" sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
           <Grid item xs={8}>
-            <Item>xs=8</Item>
+            <Item>Email: sharksAreReal@gmail.com</Item>
           </Grid>
           <Grid item xs={4}>
-            <Item>xs=4</Item>
+            <Item>Phone: 777-8888-8888</Item>
           </Grid>
           <Grid item xs={4}>
-            <Item>xs=4</Item>
+            <Item>
+              {" "}
+              Please reach out if you have any questions and leave a message
+            </Item>
           </Grid>
           <Grid item xs={8}>
-            <Item>xs=8</Item>
+            <Item>Copy Right here</Item>
           </Grid>
         </Grid>
       </Box>
       <Footer />
-    </div>
+    </Container>
   );
 }
 
 export default Contact;
+
+const Item = styled.div`
+  bakgroundcolor: dark;
+  item-text: white;
+`;
+
+const Container = styled.div`
+  width: 100%;
+  padding-top: 4%;
+  align-items: center;
+  background: clear;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+`;

@@ -10,6 +10,7 @@ import Contact from "./containers/Contact";
 import EnterData from "./containers/EnterData";
 import Explore from "./containers/Explore";
 import Login from "./components/Log";
+import CardDetail from "./components/CardDetail";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route exact path="/EnterData" element={<EnterData />} />
         <Route exact path="/Explore" element={<Explore />} />
         <Route exact path="/Login" element={<Login />} />
+        <Route exact path="/CardDetail" element={<CardDetail />} />
       </Routes>
     </BrowserRouter>
   );
